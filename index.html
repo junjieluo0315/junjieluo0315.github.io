@@ -33,15 +33,15 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
-    <!-- 导航栏 -->
+
+<body class="bg-white text-gray-800 font-sans">
     <nav class="sticky top-0 bg-white/90 backdrop-blur-sm shadow-sm z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold text-primary">Home Page</a>
+        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" id="backToTop" class="text-base font-bold text-dark">Junjie Luo</a>
             <div class="hidden md:flex space-x-8">
-                <a href="#about" class="hover:text-primary transition-custom">About</a>
-                <a href="#projects" class="hover:text-primary transition-custom">Projects</a>
-                <a href="#contact" class="hover:text-primary transition-custom">Contact</a>
+                <a href="#about" class="hover:text-primary transition-custom border-b-2 border-transparent hover:border-primary">About</a>
+                <a href="#projects" class="hover:text-primary transition-custom border-b-2 border-transparent hover:border-primary">Projects</a>
+                <a href="#contact" class="hover:text-primary transition-custom border-b-2 border-transparent hover:border-primary">Contact</a>
             </div>
             <button class="md:hidden text-gray-700">
                 <i class="fa fa-bars text-xl"></i>
@@ -49,39 +49,36 @@
         </div>
     </nav>
 
-    <header class="bg-gradient-to-br from-dark to-gray-800 text-white py-20">
-        <div class="container mx-auto px-4 flex flex-col items-center">
-            <!-- 头像区域 - 始终居中 -->
-            <div class="mb-10">
-                <img src="assets/images/touxiang.jpg" alt="Profile Photo" class="w-48 h-48 rounded-full object-cover border-4 border-white shadow-lg">
-            </div>
-            
-            <!-- 文本区域 - 始终居中 -->
-            <div class="text-center max-w-2xl">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4 text-shadow">Junjie Luo (罗俊杰)</h1>
-                <p class="text-xl md:text-2xl text-gray-300 mb-6">Technical Artist & Synthetic Data Engineer @ ByteDance</p>
-                <div class="flex justify-center space-x-4">
+    <div class="max-w-5xl mx-auto bg-gradient-to-br from-dark to-gray-800 text-white px-4 py-10">
+        <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+            <div class="text-center md:text-left max-w-2xl order-1 md:order-0">
+                <h1 class="text-4xl font-bold mb-2 text-shadow">Junjie Luo</h1>
+                <h1 class="text-2xl font-bold mb-3 text-shadow">罗俊杰</h1>
+                <p class="text-lg text-gray-300 mb-4">
+                    Technical Artist & Synthetic Data Engineer <br>@ ByteDance, Beijing, China
+                </p>
+                <div class="flex justify-center md:justify-start space-x-4">
                     <a href="mailto:junjieluo0315@gmail.com" class="bg-gray-700 hover:bg-gray-600 p-3 rounded-full transition-custom">
-                        <i class="fa fa-envelope text-xl"></i>
-                    </a>
-                    <a href="https://github.com/junjieluo0315" target="_blank" class="bg-gray-700 hover:bg-gray-600 p-3 rounded-full transition-custom">
-                        <i class="fa fa-github text-xl"></i>
+                        <i class="fa fa-envelope" style="font-size: 1.2rem;"></i>
                     </a>
                 </div>
             </div>
+            
+            <div class="mb-6 md:mb-0 order-0 md:order-1 ml-4">
+                <img src="assets/images/touxiang.jpg" alt="Profile Photo" class="w-48 h-48 rounded-full object-cover border-4 border-white shadow-lg">
+            </div>
         </div>
-    </header>
+    </div>
 
-    <!-- 关于我 -->
-    <section id="about" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
+    <section id="about" class="py-10 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
             <h2 class="text-3xl font-bold mb-10 text-center">About Me</h2>
-            <div class="max-w-3xl mx-auto">
-                <p class="text-lg mb-6">
+            <div class="mx-auto">
+                <p class="text-lg mb-6 leading-relaxed">
                     I'm a Technical Artist and Synthetic Data Engineer at ByteDance's Intelligent Creation Team, where I've been working since 2020. 
                     My core focus is developing Houdini 3D-based procedural rendering pipelines to generate customized training data.
                 </p>
-                <p class="text-lg mb-6">
+                <p class="text-lg mb-6 leading-relaxed">
                     The synthetic data I create supports video generation models and various computer vision tasks, 
                     playing a critical role in optimizing model performance by providing high-quality, diverse datasets.
                 </p>
@@ -89,38 +86,34 @@
         </div>
     </section>
 
-    <!-- 项目展示 -->
-    <section id="projects" class="pt-1 pb-16 bg-white">
-        <div class="container mx-auto px-4">
+    <section id="projects" class="pt-1 pb-10 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
             <h2 class="text-3xl font-bold mb-10 text-center">Featured Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <!-- 项目1 -->
-                <div class="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-custom">
-                    <img src="assets/images/1015-600x400.jpg" alt="Rendering Synthetic Data" class="w-full h-52 object-cover">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto">
+                <div class="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-custom transform hover:translate-y-[-4px]">
+                    <img src="assets/images/rendered_rgbd_example.webp" alt="Rendering Synthetic Data" class="w-full h-52 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Rendering Synthetic Data for video generation models</h3>
                         <p class="text-gray-600 mb-4">
-                            Customized 3D rendering synthetic data solutions to help optimize models and provide training data for AI special effects.
+                            Provide customized 3D rendering synthetic data solutions to facilitate model optimization and iteration.<br>
+                            Generate customized training data for AI special effects to support the training needs of special effects models.
                         </p>
-                        <!-- <a href="#" class="text-primary hover:text-blue-700 font-medium">View Details <i class="fa fa-arrow-right ml-1"></i></a> -->
                     </div>
                 </div>
-                <!-- 项目2 -->
-                <div class="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-custom">
-                    <img src="assets/images/1019-600x400.jpg" alt="Procedural Dataset Generation" class="w-full h-52 object-cover">
+                <div class="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-custom transform hover:translate-y-[-4px]">
+                    <img src="assets/images/scene_builder_pcg.webp" alt="Procedural Dataset Generation" class="w-full h-52 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Cloud-Native Rendering and Synthetic Data Platform</h3>
                         <p class="text-gray-600 mb-4">
-                            Developed Houdini-based PCG pipelines to generate diverse training datasets for video generation models, including 3D scenes construction and parametric control.
+                            Enabled full 3D workflows on the cloud (including cloud desktops, rendering farms, asset libraries, databases, and VFX pipelines).<br>
+                            Built Houdini-based PCG pipelines for video model training data, featuring 3D asset management, automated scene composition, and parametric control over rendering.
                         </p>
-                        <!-- <a href="#" class="text-primary hover:text-blue-700 font-medium">View Details <i class="fa fa-arrow-right ml-1"></i></a> -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 联系方式 -->
     <section id="contact" class="pt-8 pb-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-10 text-center">Get In Touch</h2>
@@ -132,11 +125,8 @@
                     <a href="mailto:junjieluo0315@gmail.com" class="flex items-center text-gray-700 hover:text-primary transition-custom">
                         <i class="fa fa-envelope mr-2"></i> junjieluo0315@gmail.com
                     </a>
-                    <a href="https://github.com/junjieluo0315" target="_blank" class="flex items-center text-gray-700 hover:text-primary transition-custom">
-                        <i class="fa fa-github mr-2"></i> github.com/junjieluo0315
-                    </a>
                     <div style="display: inline-flex; align-items: center; color: #22c55e; font-size: 16px;">
-                        <i class="fa fa-weixin" style="margin-right: 8px; font-size: 20px;"></i>
+                        <i class="fa fa-weixin" style="margin-right: 8px; font-size: 16px;"></i>
                         <span>Roger315</span>
                     </div>
                 </div>
@@ -144,7 +134,6 @@
         </div>
     </section>
 
-    <!-- 页脚 -->
     <footer class="bg-dark text-white py-8">
         <div class="container mx-auto px-4 text-center">
             <p>&copy; 2025 Junjie Luo. All rights reserved.</p>
@@ -153,7 +142,16 @@
     </footer>
 
     <script>
-        // 平滑滚动
+        // 平滑滚动到顶部（点击导航栏左侧名称时）
+        document.getElementById('backToTop').addEventListener('click', function(e) {
+            e.preventDefault(); // 阻止默认跳转行为
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // 平滑滚动效果
+            });
+        });
+
+        // 其他导航项的平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -163,7 +161,7 @@
             });
         });
 
-        // 移动端菜单切换（简化版）
+        // 移动端菜单切换
         const menuButton = document.querySelector('button.md\\:hidden');
         menuButton.addEventListener('click', () => {
             alert('Mobile menu would toggle here in a full implementation');
