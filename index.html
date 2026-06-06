@@ -3,169 +3,1026 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#3B82F6',
-                        secondary: '#10B981',
-                        dark: '#1E293B',
-                        light: '#F8FAFC'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                }
-            }
+    <title>Junjie Luo | Synthetic Data &amp; ML Data Engineer</title>
+    <meta name="description" content="Junjie Luo focuses on synthetic data and machine learning data engineering for generative video, with a long-term interest in world models.">
+    <style>
+        :root {
+            --paper: #ffffff;
+            --paper-strong: #f2ebe0;
+            --ink: #20202a;
+            --ink-soft: #6a6a70;
+            --ink-muted: #80879a;
+            --line: #e0e0e0;
+            --link: #3d5d96;
+            --accent: #202642;
+            --max-width: 1311px;
+            --content-width: 840px;
+            --hero-col: 224px;
+            --media-col: 252px;
+            --gutter: 56px;
+            --text-measure: 760px;
+            --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, "Times New Roman", serif;
+            --sans: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --mono: "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", monospace;
         }
-    </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .text-shadow {
-                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 8px;
+        }
+
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--serif);
+            line-height: 1.68;
+            text-rendering: optimizeLegibility;
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .shell {
+            width: min(calc(100% - 40px), var(--max-width));
+            margin: 0 auto;
+        }
+
+        .content-grid {
+            width: min(100%, var(--content-width));
+            margin: 0 auto;
+            display: block;
+        }
+
+        .hero-grid {
+            width: min(100%, var(--content-width));
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: calc(3.2rem * 1.125);
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: min(100%, var(--content-width));
+            margin: 0 auto;
+            background: var(--paper);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0 7px;
+            font-family: var(--mono);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            border-bottom: 2px solid var(--line);
+        }
+
+        .brand {
+            color: #6d7791;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 34px;
+        }
+
+        .nav-links a {
+            color: #26304a;
+            font-weight: 400;
+        }
+
+        .nav-links a.active {
+            font-weight: 700;
+        }
+
+        .hero {
+            align-items: center;
+            padding: 52px 0 32px;
+        }
+
+        .portrait-wrap {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .hero-meta {
+            text-align: left;
+        }
+
+        .portrait {
+            width: 229px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .hero-meta h1 {
+            margin: 0;
+            font-size: clamp(2.04rem, 2.55vw, 2.55rem);
+            line-height: 0.94;
+            font-weight: 700;
+            color: #181818;
+            letter-spacing: 0em;
+            font-family: var(--serif);
+        }
+
+        .hero-meta .cn {
+            display: block;
+            margin-top: 10px;
+            font-size: clamp(0.91rem, 1.12vw, 1.2rem);
+            font-weight: 600;
+            color: #2b3554;
+            letter-spacing: 0em;
+            font-family: var(--serif);
+        }
+
+        .title {
+            margin-top: 28px;
+            font-size: 0.91rem;
+            line-height: 1.35;
+            letter-spacing: 0;
+            color: #2b3554;
+        }
+
+        .institution {
+            margin-top: 4px;
+            font-size: 0.91rem;
+            line-height: 1.35;
+            letter-spacing: 0;
+            color: #2b3554;
+        }
+
+        .contact-row {
+            margin-top: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 12px;
+            font-family: var(--serif);
+            font-size: 0.87rem;
+            line-height: 1.28;
+            color: #2b3554;
+            letter-spacing: 0;
+        }
+
+        .contact-row + .contact-row {
+            margin-top: 2px;
+        }
+
+        .contact-row span,
+        .contact-row a {
+            color: inherit;
+        }
+
+        .contact-row .separator {
+            color: #a3abbb;
+            margin: 0 -8px;
+        }
+
+        .contact-row a {
+            color: var(--link);
+        }
+
+        .lead {
+            margin: 0;
+            max-width: 100%;
+            padding: 18px 0 0;
+            font-size: 0.91rem;
+            line-height: 1.35;
+            color: #24242d;
+            text-align: left;
+        }
+
+        .intro-block {
+            width: min(100%, var(--content-width));
+            margin: 0 auto;
+            display: block;
+        }
+
+        .intro-block .lead {
+            max-width: calc(var(--text-measure) - 16ch);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .lead p {
+            margin: 0 0 12px;
+        }
+
+        .section {
+            padding: 32px 0 8px;
+        }
+
+        .section:last-of-type {
+            padding-bottom: 96px;
+        }
+
+        #data-work {
+            scroll-margin-top: 20px;
+        }
+
+        .eyebrow {
+            font-family: var(--mono);
+            text-transform: uppercase;
+            letter-spacing: 0.24em;
+            font-size: 0.74rem;
+            color: var(--ink-muted);
+            margin-bottom: 10px;
+        }
+
+        .section-main {
+            min-width: 0;
+        }
+
+        .section h2 {
+            margin: 0;
+            font-size: 1.32rem;
+            line-height: 1.06;
+            color: #25304f;
+            letter-spacing: 0em;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--line);
+        }
+
+        .summary {
+            max-width: 100%;
+            font-size: 0.91rem;
+            line-height: 1.35;
+            color: #4a5268;
+            text-align: left;
+        }
+
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 56px;
+            margin-top: 26px;
+        }
+
+        .focus-card {
+            min-width: 0;
+            padding: 0;
+        }
+
+        .focus-card:last-child {
+            padding: 0;
+        }
+
+        .focus-card .index {
+            font-family: var(--sans);
+            font-size: 0.76rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #8891a5;
+        }
+
+        .focus-card h3 {
+            margin: 12px 0 10px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #243150;
+            letter-spacing: 0em;
+        }
+
+        .focus-card p {
+            margin: 0;
+            font-size: 0.91rem;
+            color: #596174;
+            line-height: 1.35;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+
+        .entry {
+            display: grid;
+            grid-template-columns: var(--media-col) minmax(0, 1fr);
+            gap: var(--gutter);
+            align-items: center;
+            padding: 20px 0 22px;
+        }
+
+        .entry-visual {
+            width: 100%;
+            aspect-ratio: 1.72 / 1;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            color: #98a1b4;
+            font-family: var(--sans);
+            font-size: 0.7rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            border-radius: 6px;
+        }
+
+        .entry-visual--image {
+            padding: 0px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+        }
+
+        .entry-visual--image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .entry-visual--split {
+            display: grid;
+            grid-template-columns: 30px minmax(0, 1fr);
+            gap: 4px;
+            padding: 2px;
+            overflow: hidden;
+            align-items: center;
+        }
+
+        .entry-visual--split-label {
+            height: calc(100% - 4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000000;
+            font-family: var(--serif);
+            font-size: 0.41rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            line-height: 1;
+            text-transform: uppercase;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+        }
+
+        .entry-visual--split-media {
+            height: calc(100% - 4px);
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 4px;
+            overflow: hidden;
+        }
+
+        .entry-visual--split img {
+            width: auto;
+            height: 100%;
+            max-width: none;
+            max-height: none;
+            object-fit: contain;
+            display: block;
+            flex: 1 1 0;
+            min-width: 0;
+            background: #ffffff;
+            border-radius: 4px;
+        }
+
+        .entry-visual--split-edge-label {
+            grid-template-columns: 24px minmax(0, 1fr);
+            gap: 0;
+            padding: 4px 2px 4px 0;
+        }
+
+        .entry-visual--split-edge-label .entry-visual--split-label {
+            height: 88%;
+            justify-content: center;
+        }
+
+        .entry-visual--split-edge-label .entry-visual--split-media {
+            width: 100%;
+            height: 88%;
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            justify-content: flex-end;
+            overflow: hidden;
+        }
+
+        .entry-visual--split-edge-label img {
+            width: auto;
+            height: 100%;
+            max-width: none;
+            max-height: 100%;
+            object-fit: contain;
+            flex: 0 0 auto;
+        }
+
+        .entry-visual--split-ai-effect .entry-visual--split-media {
+            height: calc(100% - 4px);
+        }
+
+        .image-hover-preview {
+            position: fixed;
+            z-index: 200;
+            width: min(38vw, 540px);
+            padding: 10px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 120ms ease;
+        }
+
+        .image-hover-preview.is-visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .image-hover-preview img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+        }
+
+        .entry h3 {
+            margin: 0 0 6px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            line-height: 1.16;
+            color: #243150;
+            letter-spacing: 0em;
+        }
+
+        .meta {
+            font-family: var(--sans);
+            color: #7e879b;
+            font-size: 0.74rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .authors {
+            margin: 8px 0 10px;
+            font-size: 0.91rem;
+            line-height: 1.35;
+            color: #000000;
+            text-align: left;
+        }
+
+        .entry p {
+            margin: 10px 0 0;
+            font-size: 0.91rem;
+            line-height: 1.35;
+            color: #000000;
+            text-align: left;
+        }
+
+        .links {
+            margin-top: 12px;
+            font-family: var(--sans);
+            font-size: 0.82rem;
+            color: #7a8396;
+        }
+
+        .links a {
+            color: #2f4f8f;
+            font-weight: 500;
+        }
+
+        .links a:hover {
+            color: #243f77;
+            text-decoration: underline;
+            text-underline-offset: 0.12em;
+        }
+
+        .links span {
+            margin: 0 8px;
+            color: #a0a8ba;
+        }
+
+        .journey {
+            margin-top: 10px;
+        }
+
+        .journey-item {
+            display: grid;
+            grid-template-columns: var(--media-col) minmax(0, 1fr);
+            gap: var(--gutter);
+            align-items: center;
+            padding: 20px 0 22px;
+        }
+
+        .journey-visual {
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .journey-visual .year {
+            font-size: 0.68rem;
+            letter-spacing: 0.2em;
+        }
+
+        .journey-visual .org {
+            font-size: 0.96rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: none;
+            color: #56627b;
+        }
+
+        .journey-time {
+            font-family: var(--sans);
+            color: #80889d;
+            font-size: 0.78rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .journey-item h3 {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #243150;
+            letter-spacing: 0em;
+        }
+
+        .journey-item p {
+            margin: 8px 0 0;
+            color: #000000;
+            font-size: 0.91rem;
+            line-height: 1.35;
+            text-align: left;
+        }
+
+
+        .contact-box {
+            margin: 18px 0 70px;
+            padding: 26px 0 6px;
+        }
+
+        .contact-box p {
+            margin: 0 0 10px;
+            font-size: 0.96rem;
+            line-height: 1.78;
+            color: #46506a;
+        }
+
+        .footer {
+            padding: 16px 0 40px;
+            font-family: var(--sans);
+            font-size: 0.82rem;
+            color: #8892a9;
+        }
+
+        @media (max-width: 900px) {
+            .content-grid {
+                width: 100%;
             }
-            .transition-custom {
-                transition: all 0.3s ease;
+
+            .hero-grid {
+                width: 100%;
+                grid-template-columns: 1fr;
+                column-gap: 0;
+            }
+
+            .intro-block {
+                width: 100%;
+                grid-template-columns: 1fr;
+                column-gap: 0;
+            }
+
+            .hero {
+                gap: 28px;
+            }
+
+            .portrait-wrap {
+                justify-content: center;
+            }
+
+            .contact-row .separator {
+                display: none;
+            }
+
+            .focus-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+                border-top: 0;
+            }
+
+            .focus-card,
+            .focus-card:last-child {
+                padding: 0;
+                border-right: 0;
+            }
+
+            .entry,
+            .journey-item {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+        }
+
+        @media (max-width: 640px) {
+            .shell {
+                width: min(calc(100% - 28px), var(--max-width));
+            }
+
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .nav-links {
+                gap: 18px;
+                flex-wrap: wrap;
+            }
+
+            .hero {
+                padding-top: 24px;
+            }
+
+            .hero-meta h1 {
+                font-size: 2.38rem;
+            }
+
+            .hero-meta .cn {
+                font-size: 1.57rem;
+            }
+
+            .section h2 {
+                font-size: 1.45rem;
+            }
+
+            .lead,
+            .summary {
+                text-align: left;
             }
         }
     </style>
 </head>
-
-<body class="bg-white text-gray-800 font-sans">
-    <nav class="sticky top-0 bg-white/90 backdrop-blur-sm shadow-sm z-50">
-        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" id="backToTop" class="text-base font-bold text-dark">Junjie Luo</a>
-            <div class="hidden md:flex space-x-8">
-                <a href="#about" class="hover:text-primary transition-custom border-b-2 border-transparent hover:border-primary">About</a>
-                <a href="#projects" class="hover:text-primary transition-custom border-b-2 border-transparent hover:border-primary">Projects</a>
-                <a href="#contact" class="hover:text-primary transition-custom border-b-2 border-transparent hover:border-primary">Contact</a>
+<body>
+    <div class="shell">
+        <nav class="nav">
+            <div class="brand">JUNJIE LUO</div>
+            <div class="nav-links">
+                <a href="#about" class="active">Home</a>
+                <a href="#data-work">Work</a>
+                <a href="#journey">Experience</a>
             </div>
-            <button class="md:hidden text-gray-700">
-                <i class="fa fa-bars text-xl"></i>
-            </button>
-        </div>
-    </nav>
+        </nav>
 
-    <div class="max-w-5xl mx-auto bg-gradient-to-br from-dark to-gray-800 text-white px-4 py-10">
-        <div class="flex flex-col md:flex-row items-center justify-center gap-6">
-            <div class="text-center md:text-left max-w-2xl order-1 md:order-0">
-                <h1 class="text-4xl font-bold mb-2 text-shadow">Junjie Luo</h1>
-                <h1 class="text-2xl font-bold mb-3 text-shadow">罗俊杰</h1>
-                <p class="text-lg text-gray-300 mb-4">
-                    Technical Artist & Synthetic Data Engineer <br>@ ByteDance, Beijing, China
-                </p>
-                <div class="flex justify-center md:justify-start space-x-4">
-                    <a href="mailto:junjieluo0315@gmail.com" class="bg-gray-700 hover:bg-gray-600 p-3 rounded-full transition-custom">
-                        <i class="fa fa-envelope" style="font-size: 1.2rem;"></i>
-                    </a>
+        <section class="hero hero-grid" id="about">
+            <div class="portrait-wrap">
+                <img src="assets/images/头像.JPG" alt="Junjie Luo portrait" class="portrait">
+            </div>
+
+            <div class="hero-meta">
+                <h1>Junjie Luo <span class="cn">罗俊杰</span></h1>
+                <div class="title">Synthetic Data &amp; ML Data Engineer</div>
+                <div class="institution">Intelligent Creation Team, ByteDance · Beijing</div>
+
+                <div class="contact-row">
+                    <span>Email: junjieluo0315 [at] gmail [dot] com</span>
+                </div>
+                <div class="contact-row">
+                    <span>WeChat: Roger315</span>
                 </div>
             </div>
-            
-            <div class="mb-6 md:mb-0 order-0 md:order-1 ml-4">
-                <img src="assets/images/touxiang.jpg" alt="Profile Photo" class="w-48 h-48 rounded-full object-cover border-4 border-white shadow-lg">
+        </section>
+
+        <div class="intro-block">
+            <div class="lead">
+                <p>
+                    I am currently a data engineer at ByteDance, focusing on data systems for video generation models. My work spans Houdini-based procedural synthetic data generation, rendering-platform infrastructure, and multimodal training-data curation.
+                </p>
+                <p>
+                    Before joining ByteDance in 2020, I spent years in film and animation production as a pipeline technical director.
+                    That background still shapes how I approach data systems today: build them to be stable, controllable, and useful at scale.
+                </p>
+                <p>
+                    Long term, I aim to advance rendering-based synthetic data infrastructure toward <strong>world models</strong>,
+                    while deepening general-purpose data engineering for scalable dataset curation and training-data construction.
+                </p>
             </div>
         </div>
+
+
+
+        <section class="section content-grid" id="data-work">
+            <div class="section-main">
+                <div class="eyebrow">Selected Work</div>
+                <h2>Synthetic Data, Multimodal Training Data, and Model Applications</h2>
+                <div class="list">
+                    <article class="entry">
+                        <div class="entry-visual entry-visual--image">
+                            <img src="assets/images/mldata.png" alt="ML data pipeline cover">
+                        </div>
+                        <div>
+                            <h3>Multimodal Training Dataset Construction for Video Generation Models</h3>
+                            <div class="meta">current work</div>
+                            <p>
+                                My current work focuses less on rendering itself and more on machine learning data: sourcing public data, selecting and clustering samples, VLM-based cleaning, pairing, operator processing, and dataset delivery. 
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="entry">
+                        <div class="entry-visual entry-visual--image">
+                            <img src="assets/images/scaling4d.png" alt="Scaling4D">
+                        </div>
+                        <div>
+                            <h3>Scaling4D: Pushing the Frontier of Video Novel View Synthesis through Large-Scale Monocular Videos</h3>
+                            <div class="meta">CVPR 2026</div>
+                            <p class="authors">
+                                Hongrui Cai, <strong>Junjie Luo</strong>, Zhihong Fu, Shengnan Zhu, Jiawei Wen, Wanquan Feng†, Songtao Zhao, Qian He
+                            </p>
+                            <div class="links">
+                                <a href="https://openaccess.thecvf.com/content/CVPR2026/papers/Cai_Scaling4D_Pushing_the_Frontier_of_Video_Novel_View_Synthesis_through_CVPR_2026_paper.pdf" target="_blank" rel="noreferrer">Paper</a>
+                                <span>/</span>
+                                <a href="https://rainbowrui.github.io/scaling4d/" target="_blank" rel="noreferrer">Project Page</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="entry">
+                        <div class="entry-visual entry-visual--image">
+                            <img src="assets/images/omnitransfer.png" alt="OmniTransfer rendering data thumbnail">
+                        </div>
+                        <div>
+                            <h3>Spatio-temporal Disentangled Data Construction for Motion Transfer</h3>
+                            <div class="meta">Rendering Data Construction</div>
+                            <p>
+                                Designed a rendering-based dataset for spatio-temporal motion transfer, with aligned multi-view, multi-identity, and multi-environment sequences to support controlled data supervision and model training.
+                            </p>
+                            <div class="links">
+                                Related work: <a href="https://arxiv.org/abs/2601.14250" target="_blank" rel="noreferrer">OmniTransfer</a> (arXiv 2026)
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="entry">
+                        <div class="entry-visual entry-visual--image entry-visual--split entry-visual--split-edge-label entry-visual--split-ai-effect">
+                            <div class="entry-visual--split-label">AI Effects</div>
+                            <div class="entry-visual--split-media">
+                                <img src="assets/images/aigc-application-01.webp" alt="AIGC video effect demo 1" loading="lazy">
+                                <img src="assets/images/aigc-application-02.webp" alt="AIGC video effect demo 2" loading="lazy">
+                            </div>
+                        </div>
+                        <div>
+                            <h3>Synthetic Rendering Data for Video LoRA Training</h3>
+                            <div class="meta">synthetic data and training support</div>
+                            <p>
+                                Drove the ongoing development of rendering-platform infrastructure and produced controllable synthetic rendering data for video LoRA training, supporting multiple AI video effects launched in production.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="entry">
+                        <div class="entry-visual entry-visual--image entry-visual--split entry-visual--split-edge-label">
+                            <div class="entry-visual--split-label">Model Applications</div>
+                            <div class="entry-visual--split-media">
+                                <img src="assets/images/ai-portrait-01.gif" alt="AI portrait application demo 1" loading="lazy">
+                                <img src="assets/images/xqkk.webp" alt="AI portrait application preview" loading="lazy">
+                            </div>
+                        </div>
+                        <div>
+                            <h3>Video Generation Model Applications</h3>
+                            <div class="meta">application support and tooling</div>
+                            <p>
+                                Supported video generation model applications through ComfyUI-based tooling and internal integration, including plugins for I2V-Control and ID-Keep, as well as production adaptation of open-source models through custom integration and application-oriented tooling.
+                            </p>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section content-grid" id="journey">
+            <div class="section-main">
+                <div class="eyebrow">Experience</div>
+                <h2>A Path from Film Pipeline to Data Engineering</h2>
+                <div class="journey">
+                    <div class="journey-item">
+                        <div class="entry-visual entry-visual--image">
+                            <img src="assets/images/bytedance.png" alt="ByteDance thumbnail">
+                        </div>
+                        <div>
+                            <div class="journey-time">2020 - Present</div>
+                            <h3>ByteDance · Synthetic Data &amp; ML Data Engineer</h3>
+                            <p>
+                                At ByteDance, my work spans rendering-platform infrastructure, Houdini-based procedural synthetic data generation, and ML data engineering: building rendering systems for 3D animation production, supporting 3D GAN with synthetic data, supporting AIGC applications, producing rendering data for video LoRA training, and curating training datasets for video generation models.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="journey-item">
+                        <div class="entry-visual entry-visual--image">
+                            <img src="assets/images/fengshen.png" alt="Myth VFX thumbnail">
+                        </div>
+                        <div>
+                            <div class="journey-time">2018 - 2020</div>
+                            <h3>Myth VFX · Pipeline Technical Director</h3>
+                            <p>
+                                Contributed to post-production pipeline development at Myth for the Creation of the Gods trilogy, focusing on standardizing the VFX pipeline and building production infrastructure for data ingest, production tracking, asset and shot management, publishing, and cross-site file synchronization.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="journey-item">
+                        <div class="entry-visual entry-visual--image">
+                            <img src="assets/images/basefx.png" alt="Base FX thumbnail">
+                        </div>
+                        <div>
+                            <div class="journey-time">2014 - 2018</div>
+                            <h3>Base FX · Pipeline Technical Director</h3>
+                            <p>
+                                Contributed to multiple large-scale film productions at Base FX, including Captain America: Civil War and The Great Wall, while maintaining legacy pipeline systems, supporting the rollout of a new pipeline architecture, and facilitating the studio’s transition to a next-generation production pipeline.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="journey-item">
+                        <div class="entry-visual entry-visual--image">
+                            <img src="assets/images/sanguo.png" alt="Yinhe Changxing thumbnail">
+                        </div>
+                        <div>
+                            <div class="journey-time">2012 - 2014</div>
+                            <h3>Yinhe Changxing · Pipeline Technical Director</h3>
+                            <p>
+                                Worked in 3D animation production at Yinhe Changxing on the Romance of the Three Kingdoms animated TV series, supporting pipeline development and R&D for production tooling, file QC, cleanup, and workflow efficiency.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
     </div>
-
-    <section id="about" class="py-10 bg-white">
-        <div class="max-w-5xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-10 text-center">About Me</h2>
-            <div class="mx-auto">
-                <p class="text-lg mb-6 leading-relaxed">
-                    I'm a Technical Artist and Synthetic Data Engineer at ByteDance's Intelligent Creation Team, where I've been working since 2020. 
-                    My core focus is developing Houdini 3D-based procedural rendering pipelines to generate customized training data.
-                </p>
-                <p class="text-lg mb-6 leading-relaxed">
-                    The synthetic data I create supports video generation models and various computer vision tasks, 
-                    playing a critical role in optimizing model performance by providing high-quality, diverse datasets.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="pt-1 pb-10 bg-white">
-        <div class="max-w-5xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-10 text-center">Featured Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto">
-                <div class="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-custom transform hover:translate-y-[-4px]">
-                    <img src="assets/images/rendered_rgbd_example.webp" alt="Rendering Synthetic Data" class="w-full h-52 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Rendering Synthetic Data for video generation models</h3>
-                        <p class="text-gray-600 mb-4">
-                            Provide customized 3D rendering synthetic data solutions to facilitate model optimization and iteration.<br>
-                            Generate customized training data for AI special effects to support the training needs of special effects models.
-                        </p>
-                    </div>
-                </div>
-                <div class="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-custom transform hover:translate-y-[-4px]">
-                    <img src="assets/images/scene_builder_pcg.webp" alt="Procedural Dataset Generation" class="w-full h-52 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Cloud-Native Rendering and Synthetic Data Platform</h3>
-                        <p class="text-gray-600 mb-4">
-                            Enabled full 3D workflows on the cloud (including cloud desktops, rendering farms, asset libraries, databases, and VFX pipelines).<br>
-                            Built Houdini-based PCG pipelines for video model training data, featuring 3D asset management, automated scene composition, and parametric control over rendering.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="pt-8 pb-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-10 text-center">Get In Touch</h2>
-            <div class="max-w-2xl mx-auto text-center">
-                <p class="text-lg mb-8">
-                    I welcome discussions on related topics, let's collaborate and grow together.
-                </p>
-                <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 mb-8">
-                    <a href="mailto:junjieluo0315@gmail.com" class="flex items-center text-gray-700 hover:text-primary transition-custom">
-                        <i class="fa fa-envelope mr-2"></i> junjieluo0315@gmail.com
-                    </a>
-                    <div style="display: inline-flex; align-items: center; color: #22c55e; font-size: 16px;">
-                        <i class="fa fa-weixin" style="margin-right: 8px; font-size: 16px;"></i>
-                        <span>Roger315</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-dark text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2025 Junjie Luo. All rights reserved.</p>
-            <p class="text-gray-400 text-sm mt-2">Created with <i class="fa fa-heart text-red-500"></i> using GitHub Pages</p>
-        </div>
-    </footer>
-
+    <div class="image-hover-preview" id="image-hover-preview" aria-hidden="true">
+        <img src="" alt="">
+    </div>
     <script>
-        // 平滑滚动到顶部（点击导航栏左侧名称时）
-        document.getElementById('backToTop').addEventListener('click', function(e) {
-            e.preventDefault(); // 阻止默认跳转行为
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth' // 平滑滚动效果
-            });
-        });
+        (() => {
+            const navLinks = Array.from(document.querySelectorAll(".nav-links a"));
+            const sections = navLinks
+                .map((link) => {
+                    const target = document.querySelector(link.getAttribute("href"));
+                    return target ? { link, target } : null;
+                })
+                .filter(Boolean);
+            let pendingSection = null;
 
-        // 其他导航项的平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+            const setActiveLink = (activeLink) => {
+                navLinks.forEach((link) => {
+                    const isActive = link === activeLink;
+                    link.classList.toggle("active", isActive);
+                    if (isActive) {
+                        link.setAttribute("aria-current", "page");
+                    } else {
+                        link.removeAttribute("aria-current");
+                    }
+                });
+            };
+
+            const updateUrlHash = (hash) => {
+                if (window.location.hash !== hash) {
+                    history.replaceState(null, "", hash);
+                }
+            };
+
+            const updateActiveLink = () => {
+                if (pendingSection) {
+                    const targetTop = pendingSection.target.getBoundingClientRect().top;
+                    if (Math.abs(targetTop) <= 120) {
+                        pendingSection = null;
+                    } else {
+                        setActiveLink(pendingSection.link);
+                        return;
+                    }
+                }
+
+                const offset = 72;
+                let current = sections[0];
+
+                sections.forEach((section) => {
+                    if (window.scrollY + offset >= section.target.offsetTop) {
+                        current = section;
+                    }
+                });
+
+                if (current) {
+                    setActiveLink(current.link);
+                }
+            };
+
+            navLinks.forEach((link) => {
+                link.addEventListener("click", (event) => {
+                    const target = document.querySelector(link.getAttribute("href"));
+                    if (!target) {
+                        return;
+                    }
+
+                    event.preventDefault();
+                    const matchedSection = sections.find((section) => section.link === link);
+                    pendingSection = matchedSection || null;
+                    setActiveLink(link);
+                    updateUrlHash(link.getAttribute("href"));
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
                 });
             });
-        });
 
-        // 移动端菜单切换
-        const menuButton = document.querySelector('button.md\\:hidden');
-        menuButton.addEventListener('click', () => {
-            alert('Mobile menu would toggle here in a full implementation');
-        });
+            window.addEventListener("scroll", updateActiveLink, { passive: true });
+            window.addEventListener("load", updateActiveLink);
+            updateActiveLink();
+        })();
+
+        (() => {
+            const preview = document.getElementById("image-hover-preview");
+            const previewImage = preview ? preview.querySelector("img") : null;
+            const thumbnails = Array.from(document.querySelectorAll(".entry-visual--image img"));
+            if (!preview || !previewImage || thumbnails.length === 0) {
+                return;
+            }
+
+            const previewOffset = 20;
+
+            const positionPreview = (event) => {
+                const previewWidth = preview.offsetWidth || 540;
+                const previewHeight = preview.offsetHeight || 320;
+                const maxLeft = window.innerWidth - previewWidth - 16;
+                const maxTop = window.innerHeight - previewHeight - 16;
+
+                let left = event.clientX + previewOffset;
+                let top = event.clientY - previewHeight / 2;
+
+                if (left > maxLeft) {
+                    left = event.clientX - previewWidth - previewOffset;
+                }
+                if (left < 16) {
+                    left = 16;
+                }
+
+                if (top > maxTop) {
+                    top = maxTop;
+                }
+                if (top < 16) {
+                    top = 16;
+                }
+
+                preview.style.left = `${left}px`;
+                preview.style.top = `${top}px`;
+            };
+
+            const showPreview = (event) => {
+                const img = event.currentTarget;
+                previewImage.src = img.currentSrc || img.src;
+                previewImage.alt = img.alt || "Preview image";
+                preview.classList.add("is-visible");
+                preview.setAttribute("aria-hidden", "false");
+                positionPreview(event);
+            };
+
+            const hidePreview = () => {
+                preview.classList.remove("is-visible");
+                preview.setAttribute("aria-hidden", "true");
+                previewImage.src = "";
+                previewImage.alt = "";
+            };
+
+            thumbnails.forEach((img) => {
+                img.addEventListener("mouseenter", showPreview);
+                img.addEventListener("mousemove", positionPreview);
+                img.addEventListener("mouseleave", hidePreview);
+            });
+
+            window.addEventListener("scroll", hidePreview, { passive: true });
+        })();
     </script>
 </body>
 </html>
