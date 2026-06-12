@@ -440,26 +440,35 @@
         .image-hover-preview {
             position: fixed;
             z-index: 200;
-            width: min(38vw, 540px);
-            padding: 10px;
+            top: 50%;
+            left: 50%;
+            width: auto;
+            max-width: min(72vw, 980px);
+            max-height: min(72vh, 680px);
+            padding: 12px;
             border-radius: 10px;
             background: rgba(255, 255, 255, 0.98);
             box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
+            transform: translate(-50%, -50%) scale(0.985);
             transition: opacity 120ms ease;
         }
 
         .image-hover-preview.is-visible {
             opacity: 1;
             visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
         }
 
         .image-hover-preview img {
-            width: 100%;
+            width: auto;
+            max-width: min(70vw, 940px);
+            max-height: min(70vh, 640px);
             height: auto;
             display: block;
+            object-fit: contain;
             border-radius: 6px;
         }
 
@@ -970,42 +979,12 @@
                 return;
             }
 
-            const previewOffset = 20;
-
-            const positionPreview = (event) => {
-                const previewWidth = preview.offsetWidth || 540;
-                const previewHeight = preview.offsetHeight || 320;
-                const maxLeft = window.innerWidth - previewWidth - 16;
-                const maxTop = window.innerHeight - previewHeight - 16;
-
-                let left = event.clientX + previewOffset;
-                let top = event.clientY - previewHeight / 2;
-
-                if (left > maxLeft) {
-                    left = event.clientX - previewWidth - previewOffset;
-                }
-                if (left < 16) {
-                    left = 16;
-                }
-
-                if (top > maxTop) {
-                    top = maxTop;
-                }
-                if (top < 16) {
-                    top = 16;
-                }
-
-                preview.style.left = `${left}px`;
-                preview.style.top = `${top}px`;
-            };
-
             const showPreview = (event) => {
                 const img = event.currentTarget;
                 previewImage.src = img.currentSrc || img.src;
                 previewImage.alt = img.alt || "Preview image";
                 preview.classList.add("is-visible");
                 preview.setAttribute("aria-hidden", "false");
-                positionPreview(event);
             };
 
             const hidePreview = () => {
@@ -1017,7 +996,6 @@
 
             thumbnails.forEach((img) => {
                 img.addEventListener("mouseenter", showPreview);
-                img.addEventListener("mousemove", positionPreview);
                 img.addEventListener("mouseleave", hidePreview);
             });
 
