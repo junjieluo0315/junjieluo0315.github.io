@@ -1,0 +1,16 @@
+index.html
+  h_0602640d1b23c2 11-12,19,24-33,46,51,68-73,248,452,458-459,463,472,480-481,679-681,809,950,953
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "8b123c0d3c6a43d8e673092d496592eeea8e0631",
+  "prompts": {},
+  "humans": {
+    "h_0602640d1b23c2": {
+      "author": "junjieluo0315 <junjieluo0315@gmail.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
