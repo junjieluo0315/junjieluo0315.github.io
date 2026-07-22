@@ -8,19 +8,29 @@
     <style>
         :root {
             --paper: #ffffff;
-            --paper-strong: #f2ebe0;
+            --page-ground: #e7e7e7;
+            --page-edge: #d8d8d8;
             --ink: #20202a;
             --ink-soft: #6a6a70;
             --ink-muted: #80879a;
             --line: #e0e0e0;
             --link: #3d5d96;
             --accent: #202642;
-            --max-width: 1311px;
+            --max-width: 1040px;
             --content-width: 840px;
-            --hero-col: 224px;
             --media-col: 252px;
             --gutter: 56px;
             --text-measure: 760px;
+            --shell-desktop-gutter: 56px;
+            --shell-desktop-margin: 18px auto 24px;
+            --shell-desktop-padding: 18px 0 20px;
+            --shell-mobile-gutter: 20px;
+            --shell-mobile-margin: 10px auto 14px;
+            --shell-mobile-padding: 10px 0;
+            --preview-frame-max-width: min(72vw, 980px);
+            --preview-frame-max-height: min(72vh, 680px);
+            --preview-image-max-width: min(70vw, 940px);
+            --preview-image-max-height: min(70vh, 640px);
             --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, "Times New Roman", serif;
             --sans: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
             --mono: "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", monospace;
@@ -33,11 +43,12 @@
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 8px;
+            background: var(--page-ground);
         }
 
         body {
             margin: 0;
-            background: var(--paper);
+            background: var(--page-ground);
             color: var(--ink);
             font-family: var(--serif);
             line-height: 1.68;
@@ -54,8 +65,12 @@
         }
 
         .shell {
-            width: min(calc(100% - 40px), var(--max-width));
-            margin: 0 auto;
+            width: min(calc(100% - var(--shell-desktop-gutter)), var(--max-width));
+            margin: var(--shell-desktop-margin);
+            padding: var(--shell-desktop-padding);
+            background: var(--paper);
+            border: 1px solid var(--page-edge);
+            box-shadow: 0 14px 40px rgba(20, 26, 39, 0.08);
         }
 
         .content-grid {
@@ -230,11 +245,7 @@
         }
 
         .section:last-of-type {
-            padding-bottom: 96px;
-        }
-
-        #data-work {
-            scroll-margin-top: 20px;
+            padding-bottom: 56px;
         }
 
         .eyebrow {
@@ -438,17 +449,18 @@
         }
 
         .image-hover-preview {
+            display: none;
             position: fixed;
             z-index: 200;
             top: 50%;
             left: 50%;
             width: auto;
-            max-width: min(72vw, 980px);
-            max-height: min(72vh, 680px);
+            max-width: var(--preview-frame-max-width);
+            max-height: var(--preview-frame-max-height);
             padding: 12px;
             border-radius: 10px;
             background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
+            box-shadow: 0 24px 56px rgba(0, 0, 0, 0.28);
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
@@ -457,6 +469,7 @@
         }
 
         .image-hover-preview.is-visible {
+            display: block;
             opacity: 1;
             visibility: visible;
             transform: translate(-50%, -50%) scale(1);
@@ -464,8 +477,8 @@
 
         .image-hover-preview img {
             width: auto;
-            max-width: min(70vw, 940px);
-            max-height: min(70vh, 640px);
+            max-width: var(--preview-image-max-width);
+            max-height: var(--preview-image-max-height);
             height: auto;
             display: block;
             object-fit: contain;
@@ -663,7 +676,9 @@
 
         @media (max-width: 640px) {
             .shell {
-                width: min(calc(100% - 28px), var(--max-width));
+                width: min(calc(100% - var(--shell-mobile-gutter)), var(--max-width));
+                margin: var(--shell-mobile-margin);
+                padding: var(--shell-mobile-padding);
             }
 
             .nav {
@@ -791,7 +806,7 @@
                             <h3>Spatio-temporal Disentangled Data Construction for Motion Transfer</h3>
                             <div class="meta">Rendering-Based Dataset Construction</div>
                             <p>
-                                Designed a rendering-based dataset for spatio-temporal motion transfer, with aligned multi-view, multi-identity, and multi-environment sequences to support controlled data supervision and model training.
+                                Designed a rendering-based dataset for motion transfer, consisting of temporally aligned multi-view videos across multiple actions, identities, and environments to support training-data construction for spatio-temporal transfer research.
                             </p>
                             <div class="links">
                                 Contribution acknowledged in: <a href="https://arxiv.org/abs/2601.14250" target="_blank" rel="noreferrer">OmniTransfer</a> (arXiv 2026)
@@ -911,7 +926,6 @@
                     return target ? { link, target } : null;
                 })
                 .filter(Boolean);
-            let pendingSection = null;
 
             const setActiveLink = (activeLink) => {
                 navLinks.forEach((link) => {
@@ -932,21 +946,11 @@
             };
 
             const updateActiveLink = () => {
-                if (pendingSection) {
-                    const targetTop = pendingSection.target.getBoundingClientRect().top;
-                    if (Math.abs(targetTop) <= 120) {
-                        pendingSection = null;
-                    } else {
-                        setActiveLink(pendingSection.link);
-                        return;
-                    }
-                }
-
-                const offset = 72;
                 let current = sections[0];
+                const threshold = window.innerHeight * 0.18;
 
                 sections.forEach((section) => {
-                    if (window.scrollY + offset >= section.target.offsetTop) {
+                    if (section.target.getBoundingClientRect().top <= threshold) {
                         current = section;
                     }
                 });
@@ -964,8 +968,6 @@
                     }
 
                     event.preventDefault();
-                    const matchedSection = sections.find((section) => section.link === link);
-                    pendingSection = matchedSection || null;
                     setActiveLink(link);
                     updateUrlHash(link.getAttribute("href"));
                     target.scrollIntoView({ behavior: "smooth", block: "start" });
