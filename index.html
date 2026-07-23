@@ -17,13 +17,13 @@
             --link: #3d5d96;
             --accent: #202642;
             --max-width: 1040px;
-            --content-width: 840px;
+            --content-width: 900px;
             --media-col: 252px;
             --gutter: 56px;
-            --text-measure: 760px;
+            --text-measure: 820px;
             --shell-desktop-gutter: 56px;
-            --shell-desktop-margin: 18px auto 24px;
-            --shell-desktop-padding: 18px 0 20px;
+            --shell-desktop-margin: 18px auto 18px;
+            --shell-desktop-padding: 18px 0 12px;
             --shell-mobile-gutter: 0px;
             --shell-mobile-margin: 0 auto;
             --shell-mobile-padding: 10px 18px 14px;
@@ -246,7 +246,7 @@
         }
 
         .section:last-of-type {
-            padding-bottom: 56px;
+            padding-bottom: 32px;
         }
 
         .eyebrow {
@@ -675,7 +675,7 @@
 
         }
 
-        @media (max-width: 640px) {
+        @media (orientation: portrait), (max-width: 900px) and (orientation: landscape) {
             html,
             body {
                 background: var(--paper);
@@ -688,7 +688,9 @@
                 border: 0;
                 box-shadow: none;
             }
+        }
 
+        @media (max-width: 640px) {
             .nav {
                 flex-direction: column;
                 align-items: flex-start;
